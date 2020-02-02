@@ -9,10 +9,12 @@ gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
 
 gem 'bootstrap', '~> 4.4.1'
+gem 'bootstrap-select-rails'
 
 gem 'jquery-rails'
 
 gem 'simple_form'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 # Use postgresql as the database for Active Record
@@ -39,6 +41,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
+  gem 'rb-readline', '~> 0.5.3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end

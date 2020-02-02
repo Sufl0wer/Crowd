@@ -66,6 +66,9 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
+    bootstrap-datepicker-rails (1.9.0.1)
+      railties (>= 3.0)
+    bootstrap-select-rails (1.13.8)
     builder (3.2.4)
     byebug (11.1.1)
     concurrent-ruby (1.1.5)
@@ -172,6 +175,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    rb-readline (0.5.5)
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -230,6 +234,8 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.2)
   bootstrap (~> 4.4.1)
+  bootstrap-datepicker-rails
+  bootstrap-select-rails
   byebug
   devise
   jbuilder (~> 2.7)
@@ -240,6 +246,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.1)
+  rb-readline (~> 0.5.3)
   sass-rails (>= 6)
   simple_form
   spring
