@@ -1,4 +1,11 @@
-<p id="notice"><%= notice %></p>
+
+<p><%= @company.name %></p>
+<p><%= @company.category %></p>
+<p><%= @company.goal %></p>
+<p><%= @company.expiration_date %></p>
+<p><%= @company.description %></p>
+
+<a class="nav-link" href="/rewards/new">Add reward</a>
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>

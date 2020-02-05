@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :check_owner, only: [:edit, :update, :destroy]
 
   # GET /companies
   # GET /companies.json
@@ -10,6 +11,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
+    @company = Company.find params.dig(:id)
   end
 
   # GET /companies/new
@@ -70,4 +72,10 @@ class CompaniesController < ApplicationController
       params.require(:company).permit(:name, :category, :goal,
                                       :expiration_date, :description, user_id: current_user.id)
     end
+
+  def check_owner
+    if Company.find(params[:id]).user != current_user
+    redirect_back fallback_location: root_path, alert: "You cannot do this on company that not belongs to you!"
+    end
+  end
 end

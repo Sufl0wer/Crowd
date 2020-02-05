@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :companies, dependent: :destroy
 
+  has_many :rewards
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :vkontakte]

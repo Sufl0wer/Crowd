@@ -1,24 +1,18 @@
-<p id="notice"><%= notice %></p>
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end -%>
 
 <h1>Companies</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @companies.each do |company| %>
-      <tr>
-        <td><%= link_to 'Show', company %></td>
-        <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<% @companies.each do |company| %>
+  <div>
+    <%= link_to company.name, company, { style: 'color: black;', class: "link" } %>
+    <% if company.user == current_user %>
+      <%= link_to 'Edit', edit_company_path(company) %>
+      <%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+<% end %>
 
 <br>
 
