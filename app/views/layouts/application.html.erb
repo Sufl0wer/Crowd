@@ -15,6 +15,9 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
+        <% if current_user and current_user.admin? %>
+          <%= render partial:  'shared/admin_navigation_bar' %>
+        <% end %>
         <%= render partial: 'shared/navigation_bar' %>
         <div class="my-3">
           <%= yield %>

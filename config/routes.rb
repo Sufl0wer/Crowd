@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :companies
   resources :rewards
 
-  get '/user_page', to: 'users#user_page'
+  get '/users_list', to: 'admins#users_list'
 
   root controller: :main_page, action: :index
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }

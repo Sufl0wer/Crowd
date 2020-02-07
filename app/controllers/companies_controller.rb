@@ -75,7 +75,7 @@ class CompaniesController < ApplicationController
 
   def check_owner
     if Company.find(params[:id]).user != current_user
-    redirect_back fallback_location: root_path, alert: "You cannot do this on company that not belongs to you!"
+      redirect_back fallback_location: root_path, alert: "You cannot do this on company that not belongs to you!"
     end
   end
 end

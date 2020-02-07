@@ -1,0 +1,28 @@
+ <table class="table justify-content-center">
+  <tr>
+    <th>Id</th>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Actions</th>
+  </tr>
+ <% @users.each do |user| %>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.username %></td>
+    <td><%= user.email %></td>
+    <td><%= user.role %></td>
+    <td>
+      <div class="dropdown">
+        <a class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Change role
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="/edit_role">User</a>
+          <a class="dropdown-item" href="/edit_role">Admin</a>
+        </div>
+      </div>
+    </td>
+  </tr>
+ <% end %>
+</table>
