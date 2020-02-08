@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :companies
   resources :rewards
 
+  get '/users/:id', to: 'users#show'
+
   get '/users_list', to: 'admins#users_list'
 
   root controller: :main_page, action: :index
