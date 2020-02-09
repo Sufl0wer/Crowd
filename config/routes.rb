@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :companies
-  resources :rewards
+  resources :companies do
+    resources :rewards
+  end
 
   get '/users/:id', to: 'users#show'
 

@@ -1,11 +1,31 @@
 
-<p><%= @company.name %></p>
-<p><%= @company.category %></p>
-<p><%= @company.goal %></p>
-<p><%= @company.expiration_date %></p>
-<p><%= @company.description %></p>
+<h3 class="text-center" style="padding-bottom: 20px;">Company <a class="font-weight-bold">"<%= @company.name %>"</a> page</h3>
 
-<a class="nav-link" href="/rewards/new">Add reward</a>
+<div class="container">
+  <div class="row">
+    <div class="col-7">
+      <h5 class="font-weight-bold">Company information</h5>
+      <p><a class="font-weight-bold">Category: <a/><%= @company.category %></p>
+      <p><a class="font-weight-bold">Founding goal: <a/><%= @company.goal %></p>
+      <p><a class="font-weight-bold">Expiration date: <a/><%= @company.expiration_date %></p>
+      <div>
+        <p class="font-weight-bold">Description: <p/>
+          <%= @company.description %>
+      </div>
+    </div>
+
+    <div class="col-24">
+      <h5 class="font-weight-bold">Available rewards</h5>
+      <% @rewards.each do |reward| %>
+        <p><%= reward.name %></p>
+        <p><a class="font-weight-bold">Price: <a/><%= reward.price %></p>
+        <p><a class="font-weight-bold">Description: <a/><%= reward.description %></p>
+      <% end %>
+
+      <a class="nav-link" href="<%= new_company_reward_path(company_id: @company.id) %>">Add reward</a>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>

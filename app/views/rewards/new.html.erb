@@ -1,9 +1,17 @@
 <h2>Add new reward</h2>
 
-<%= simple_form_for @reward do |f|%>
+<%= simple_form_for @reward, url: polymorphic_path([:company, @reward]) do |f|%>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.input_field :name, autofocus: true, required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.input_field :price, autofocus: true, required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.input_field :description, autofocus: true, required: true %>
   </div>
   <div class="actions">
     <%= f.submit "Create", class: "btn btn-success" %>

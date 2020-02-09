@@ -12,6 +12,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     @company = Company.find params.dig(:id)
+    @rewards = @company.rewards
   end
 
   # GET /companies/new

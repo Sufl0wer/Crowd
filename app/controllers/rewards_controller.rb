@@ -1,4 +1,6 @@
 class RewardsController < ApplicationController
+  before_action :set_reward, only: [:show, :edit, :update, :destroy]
+
   def new
     @reward = Reward.new
   end
@@ -11,9 +13,10 @@ class RewardsController < ApplicationController
     @reward = Reward.create name: reward_params.dig(:name),
                             price: reward_params.dig(:price),
                             description: reward_params.dig(:description),
-                            company_id:  params.dig(:id)
+                            company_id:  params.dig(:company_id)
 
     @reward.save
+    redirect_back fallback_location: root_path
   end
 
   def update
@@ -43,7 +46,6 @@ class RewardsController < ApplicationController
   end
 
   def reward_params
-    params.require(:reward).permit(:name, :category, :goal,
-                                    :expiration_date, :description, user_id: current_user.id)
+    params.require(:reward).permit(:name, :price, :description)
   end
 end
