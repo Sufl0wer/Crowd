@@ -1,6 +1,24 @@
 <p>Welcome to Crowd, a workplace for crowdfunding companies</p>
 
+<h5>Recent actions on site</h5>
 <div class="card bg-light">
-  <h5>Recent actions on site</h5>
-
+  <% @news.each do |record| %>
+    <div class="border-bottom news">
+      <div>
+        <%= record.created_at %>
+      </div>
+      <div>
+        <p>New company in category <%=record.category %>
+          <a class="font-weight-bold text-dark" href="<%= company_path(id: record.id) %>" >
+            "<%= record.name %>"
+          </a>
+          has been created.</p>
+        <p>You can check details about this company by this
+          <a class="font-weight-bold" href="<%= company_path(id: record.id) %>" >
+            link
+          </a>
+        </p>
+      </div>
+    </div>
+  <% end %>
 </div>
