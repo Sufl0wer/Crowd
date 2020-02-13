@@ -4,18 +4,36 @@
 
 <h1>Companies</h1>
 
-<% @companies.each do |company| %>
-  <div>
-    <%= link_to company.name, company, { style: 'color: black;', class: "link" } %>
-    <% if company.user == current_user %>
-      <%= link_to 'Edit', edit_company_path(company) %>
-      <%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h5 class="font-weight-bold">All companies</h5>
+
+      <div>
+        <% @companies.each do |company| %>
+          <div>
+            <%= link_to company.name, company, { style: 'color: black;', class: "link" } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col">
+      <h5 class="font-weight-bold">Your Companies</h5>
+
+      <% @companies.each do |company| %>
+        <div>
+          <% if company.user == current_user %>
+            <%= link_to company.name, company, { style: 'color: black;', class: "link" } %>
+            <%= link_to 'Edit', edit_company_path(company) %>
+            <%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <form action="companies/new" method="get">
+        <button class="btn btn-primary">Register your own company</button>
+      </form>
+    </div>
   </div>
-<% end %>
+</div>
 
-<br>
-
-<form action="companies/new" method="get">
-  <button class="btn btn-primary">Register your own company</button>
-</form>
