@@ -14,6 +14,8 @@ class CompaniesController < ApplicationController
   def show
     @company = Company.find params.dig(:id)
     @rewards = @company.rewards
+    @comments = @company.comments
+    @comment = Comment.new
   end
 
   # GET /companies/new

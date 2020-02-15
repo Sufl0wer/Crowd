@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :companies do
     resources :rewards
+    resources :comments
   end
 
   get '/users/:id', to: 'users#show'
@@ -9,5 +10,6 @@ Rails.application.routes.draw do
 
   root controller: :main_page, action: :index
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  mount ActionCable.server => '/cable'
 end
