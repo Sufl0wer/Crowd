@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
   get '/users_list', to: 'admins#users_list'
 
-  root controller: :main_page, action: :index
+  root controller: :web_site, action: :index
+  controller 'web_site' do
+    match 'search', action: :search, via: :get
+  end
+
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   mount ActionCable.server => '/cable'

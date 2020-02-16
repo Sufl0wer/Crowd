@@ -1,0 +1,7 @@
+<h4 class="text text-center">Search results for "<%= params[:search] %>"</h4>
+
+<% @search_results.each do |company| %>
+  <div class="border-bottom search-company">
+    <%= link_to company.name, company, { style: 'color: black;', class: "link" } %>
+  </div>
+<% end %>

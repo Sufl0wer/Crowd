@@ -1,11 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between ">
   <a class="navbar-brand" href="/">Crowd</a>
 
-  <form class="form-inline md-form form-sm mt-0">
-    <span class="fa fa-search form-control-feedback" style="color: azure"></span>
-    <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
-           aria-label="Search">
-  </form>
+  <%= form_tag('search', method: "get") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+    <%= submit_tag "Search" %>
+  <% end %>
 
   <% if current_user %>
     <div class="dropdown">
