@@ -29,8 +29,8 @@
           <p><a class="font-weight-bold">Price: <a/><%= reward.price %></p>
           <p><a class="font-weight-bold">Description: <a/><%= reward.description %></p>
           <div class="btn-group">
-            <a class="nav-link" href="<%= edit_company_reward_path(company_id: @company.id, reward_id: reward.id) %>">Edit</a>
-            <a class="nav-link" href="<%= company_reward_path(company_id: @company.id, reward_id: reward.id, method: :destroy) %>">Delete</a>
+            <a class="nav-link"> <%= link_to 'Edit', edit_company_reward_path(company_id: @company.id, id: reward.id) %></a>
+            <a class="nav-link"> <%= link_to 'Delete', company_reward_path(company_id: @company.id, id: reward.id), method: :delete %></a>
           </div>
         </div>
       <% end %>

@@ -16,7 +16,7 @@ class RewardsController < ApplicationController
                             company_id:  params.dig(:company_id)
 
     @reward.save
-    redirect_back fallback_location: root_path
+    redirect_to company_path(id:  params.dig(:company_id))
   end
 
   def update
@@ -33,16 +33,13 @@ class RewardsController < ApplicationController
 
   def destroy
     @reward.destroy
-    respond_to do |format|
-      format.html { redirect_to companies_url, notice: 'Reward was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_back fallback_location: root_path
   end
 
   private
 
   def set_reward
-    @reward = Reward.find(params[:reward_id])
+    @reward = Reward.find(params[:id])
   end
 
   def reward_params
