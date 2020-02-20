@@ -1,7 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
   before_action :check_owner, only: [:edit, :update, :destroy]
-  after_action :save_news, only: [:create]
 
   # GET /companie
   # GET /companies.json
@@ -84,9 +83,5 @@ class CompaniesController < ApplicationController
     if Company.find(params[:id]).user != current_user
       redirect_back fallback_location: root_path, alert: "You cannot do this on company that not belongs to you!"
     end
-  end
-
-  def save_news
-    NewsService::save_record_about_new_company(Company.last)
   end
 end

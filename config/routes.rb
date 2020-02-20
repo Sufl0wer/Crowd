@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+
   resources :companies do
     resources :rewards do
       resources :paid_rewards
     end
-    resources :donations
     resources :comments
   end
+
+  post '/companies/:company_id/donate', to: 'donations#donate'
 
   get '/users/:id', to: 'users#show'
 
@@ -15,8 +18,6 @@ Rails.application.routes.draw do
   controller 'web_site' do
     match 'search', action: :search, via: :get
   end
-
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   mount ActionCable.server => '/cable'
 end

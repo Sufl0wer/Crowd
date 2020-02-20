@@ -13,6 +13,17 @@
   <% end %>
 </div>
 
+<div class="user-rewards">
+  <a>...................</a>
+  <% if @rewards %>
+    <% @rewards.each do |reward| %>
+      <p><%= reward.name %></p>
+    <% end %>
+  <% end %>
+</div>
+
 <form action="/companies/new" method="get">
   <button class="btn btn-primary">Add new company</button>
 </form>
+
+
