@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_20_125835) do
+ActiveRecord::Schema.define(version: 2020_02_20_153956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,14 @@ ActiveRecord::Schema.define(version: 2020_02_20_125835) do
     t.float "amount", default: 0.0
     t.index ["company_id"], name: "index_donations_on_company_id"
     t.index ["user_id"], name: "index_donations_on_user_id"
+  end
+
+  create_table "news_records", force: :cascade do |t|
+    t.text "content"
+    t.bigint "company_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_news_records_on_company_id"
   end
 
   create_table "paid_rewards", force: :cascade do |t|
@@ -88,5 +96,6 @@ ActiveRecord::Schema.define(version: 2020_02_20_125835) do
   add_foreign_key "companies", "users"
   add_foreign_key "donations", "companies"
   add_foreign_key "donations", "users"
+  add_foreign_key "news_records", "companies"
   add_foreign_key "rewards", "companies"
 end

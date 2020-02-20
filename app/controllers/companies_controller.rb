@@ -14,9 +14,13 @@ class CompaniesController < ApplicationController
     @company = Company.find params.dig(:id)
     @rewards = @company.rewards
     @comments = @company.comments
+    @news_records = @company.news_records
+    @current_user_donation = @company.donations.find_by(user: current_user).amount
+
     @comment = Comment.new
     @paid_reward = PaidReward.new
     @donation = Donation.new
+    @news_record = NewsRecord.new
   end
 
   # GET /companies/new

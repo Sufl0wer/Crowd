@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :rewards do
       resources :paid_rewards
     end
+    resources :news_records
     resources :comments
   end
 

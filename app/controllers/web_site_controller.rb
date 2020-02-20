@@ -1,6 +1,6 @@
 class WebSiteController < ApplicationController
   def index
-    @news = Company.all.sort_by(&:created_at).first(10).reverse
+    @news_record = Company.all.sort_by(&:created_at).first(10).reverse
   end
 
   def search
