@@ -3,7 +3,9 @@ class User < ApplicationRecord
 
   has_many :paid_rewards
   has_many :rewards, through: :paid_rewards
-  has_many :comments
+
+  has_many :comments, dependent: :destroy
+  has_many :donations, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,

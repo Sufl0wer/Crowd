@@ -1,5 +1,5 @@
 class RewardsController < ApplicationController
-  before_action :set_reward, only: [:show, :edit, :update, :destroy]
+  before_action :set_reward, only: [:show, :edit, :update, :destroy, :handle_reward_payment]
 
   def new
     @reward = Reward.new
@@ -20,15 +20,7 @@ class RewardsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @reward.update(reward_params)
-        format.html { redirect_to @reward, notice: 'Reward was successfully updated.' }
-        format.json { render :show, status: :ok, location: @reward }
-      else
-        format.html { render :edit }
-        format.json { render json: @reward.errors, status: :unprocessable_entity }
-      end
-    end
+    @reward.update(reward_params)
   end
 
   def destroy

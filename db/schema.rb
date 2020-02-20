@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_15_164042) do
+ActiveRecord::Schema.define(version: 2020_02_19_151930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,32 +28,42 @@ ActiveRecord::Schema.define(version: 2020_02_15_164042) do
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "goal"
     t.string "category"
     t.date "expiration_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
-    t.string "current_bank"
+    t.float "goal", default: 0.0
+    t.float "current_bank", default: 0.0
     t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
-  create_table "paid_rewards", force: :cascade do |t|
-    t.bigint "users_id"
-    t.bigint "rewards_id"
+  create_table "donations", force: :cascade do |t|
+    t.bigint "company_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["rewards_id"], name: "index_paid_rewards_on_rewards_id"
-    t.index ["users_id"], name: "index_paid_rewards_on_users_id"
+    t.float "amount"
+    t.index ["company_id"], name: "index_donations_on_company_id"
+    t.index ["user_id"], name: "index_donations_on_user_id"
+  end
+
+  create_table "paid_rewards", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "reward_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["reward_id"], name: "index_paid_rewards_on_reward_id"
+    t.index ["user_id"], name: "index_paid_rewards_on_user_id"
   end
 
   create_table "rewards", force: :cascade do |t|
     t.string "name"
-    t.string "price"
     t.string "description"
     t.bigint "company_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "price"
     t.index ["company_id"], name: "index_rewards_on_company_id"
   end
 
@@ -76,5 +86,7 @@ ActiveRecord::Schema.define(version: 2020_02_15_164042) do
   add_foreign_key "comments", "companies"
   add_foreign_key "comments", "users"
   add_foreign_key "companies", "users"
+  add_foreign_key "donations", "companies"
+  add_foreign_key "donations", "users"
   add_foreign_key "rewards", "companies"
 end

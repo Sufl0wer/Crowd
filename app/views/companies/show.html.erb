@@ -1,16 +1,12 @@
 
 <h3 class="text-center" style="padding-bottom: 20px;">Company <a class="font-weight-bold">"<%= @company.name %>"</a> page</h3>
 
-<div class="donate-button">
-
-</div>
-
 <div class="container bg-light">
   <div class="row">
     <div class="col-7">
       <h5 class="font-weight-bold">Company information</h5>
       <p><a class="font-weight-bold">Category: <a/><%= @company.category %></p>
-      <p><a class="font-weight-bold">Founding goal: <a/><%= @company.goal %></p>
+      <p><a class="font-weight-bold">Founding goal: <a/><%= @company.goal %>$</p>
       <p><a class="font-weight-bold">Expiration date: <a/><%= @company.expiration_date %></p>
       <div>
         <p class="font-weight-bold">Description: <p/>
@@ -23,22 +19,81 @@
 
     <div class="col-24">
       <h5 class="font-weight-bold">Available rewards</h5>
-      <% @rewards.each do |reward| %>
-        <div class="container bg-light border">
-          <p><%= reward.name %></p>
-          <p><a class="font-weight-bold">Price: <a/><%= reward.price %></p>
-          <p><a class="font-weight-bold">Description: <a/><%= reward.description %></p>
-          <div class="btn-group">
-            <a class="nav-link"> <%= link_to 'Edit', edit_company_reward_path(company_id: @company.id, id: reward.id) %></a>
-            <a class="nav-link"> <%= link_to 'Delete', company_reward_path(company_id: @company.id, id: reward.id), method: :delete %></a>
+      <div class="d-flex">
+        <% @rewards.each do |reward| %>
+          <div class="container bg-light border">
+            <p><%= reward.name %></p>
+            <p><a class="font-weight-bold">Price: <a/><%= reward.price %></p>
+            <p><a class="font-weight-bold">Description: <a/><%= reward.description %></p>
+            <%= simple_form_for @paid_reward, url: "/companies/#{@company.id}/rewards/#{reward.id}/paid_rewards", method: :post do |form| %>
+              <div class="input-group-append">
+                <%= form.submit "Participate", class: 'btn btn-primary' %>
+              </div>
+            <% end %>
+            <% if @company.user == current_user %>
+              <div class="btn-group">
+                <a class="nav-link"> <%= link_to 'Edit', edit_company_reward_path(company_id: @company.id, id: reward.id) %></a>
+                <a class="nav-link"> <%= link_to 'Delete', company_reward_path(company_id: @company.id, id: reward.id), method: :delete %></a>
+              </div>
+            <% end %>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
 
       <a class="nav-link" href="<%= new_company_reward_path(company_id: @company.id) %>">Add reward</a>
     </div>
   </div>
+
+  <div class="d-flex align-items-center flex-column">
+    <div class="donate-button-header">
+      <h4 class="font-weight-bold">Donate a specific sum to project to show to your interest</h4>
+    </div>
+
+    <div class="current-bank">
+      <h4>Collected so far <%= @company.current_bank %>$</h4>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-success donate-button" data-toggle="modal" data-target="#donationWindow">
+      Donate
+    </button>
+
+    <div class="modal fade donation-window" id="donationWindow" aria-hidden="true" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Submit donation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for @donation, url: "/companies/#{@company.id}/donations", method: :post do |form| %>
+              <div class="input-group mb-3 d-flex justify-content-center">
+                <%= form.input :amount, as: :string,
+                               wrapper: false,
+                               autofocus: true,
+                               label: false,
+                               input_html: {
+                                   class: 'comment-input',
+                                   autocomplete: 'off',
+                                   placeholder: 'USD'
+                               } %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <%= form.submit "Donate", class: 'btn btn-primary' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
 
 <div class="container comments-section">
   <div class="font-weight-bold">Comments</div>

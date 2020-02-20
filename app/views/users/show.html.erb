@@ -1,3 +1,18 @@
 <div>
   <a>Welcom to personal page <%= current_user.username %></a>
 </div>
+
+<div class="user-companies">
+  <h4 class="font-weight-bold">Your companies list</h4>
+  <% @companies.each do |company| %>
+    <div>
+      <%= link_to company.name, company, { style: 'color: black;', class: "link" } %>
+      <%= link_to 'Edit', edit_company_path(company) %>
+      <%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  <% end %>
+</div>
+
+<form action="/companies/new" method="get">
+  <button class="btn btn-primary">Add new company</button>
+</form>

@@ -16,6 +16,8 @@ class CompaniesController < ApplicationController
     @rewards = @company.rewards
     @comments = @company.comments
     @comment = Comment.new
+    @paid_reward = PaidReward.new
+    @donation = Donation.new
   end
 
   # GET /companies/new

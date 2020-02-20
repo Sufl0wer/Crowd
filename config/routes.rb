@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :companies do
-    resources :rewards
+    resources :rewards do
+      resources :paid_rewards
+    end
+    resources :donations
     resources :comments
   end
 
