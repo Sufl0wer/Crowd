@@ -1,6 +1,8 @@
 class Company < ApplicationRecord
   include PgSearch::Model
 
+  acts_as_taggable_on :tags
+
   belongs_to :user
 
   has_many :rewards, dependent: :destroy
@@ -8,10 +10,12 @@ class Company < ApplicationRecord
   has_many :donations, dependent: :destroy
   has_many :news_records, dependent: :destroy
 
-  pg_search_scope :search, against: [:name, :category, :description],
+  pg_search_scope :search, against: [:name, :description],
                   associated_against: {
+                      news_records: [:heading, :content],
                       rewards: [ :name, :description ],
-                      comments: [:content]
+                      comments: [:content],
+                      tags: [:name]
                   },
                   using: {
                       tsearch: {
@@ -20,4 +24,7 @@ class Company < ApplicationRecord
                   }
 
   validates :name, uniqueness: true, presence: true
+  validates :goal, presence: true
+  validates :expiration_date, presence: true
+  validates :description, presence: true
 end

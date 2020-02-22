@@ -5,6 +5,9 @@ ruby '2.6.3'
 
 gem 'devise'
 
+gem 'acts-as-taggable-on', '~> 6.0'
+gem 'bootstrap-tagsinput-rails'
+
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
 

@@ -1,18 +1,18 @@
 <h1>Company creation form</h1>
 
 <%= simple_form_for @company do |f|%>
-  <div class="form-inputs">
+  <div class="form-inputs new-company">
     <div class="field">
       <%= f.label :name %><br />
       <%= f.input_field :name, autofocus: true, required: true %>
     </div>
-    <div class="field" style="margin-top: 7px; max-width: 205px">
-      <%= f.input :category, :collection => %w(Education Science Medicine Art Gaming Engineering),
-                  input_html: { class: 'form-control'}, label: "Branch" %>
+    <div class="field">
+      <%= f.label "Tags" %><br />
+      <%= f.input :tag_list, input_html:{data:{role:'tagsinput'}}, label: false %>
     </div>
     <div class="field">
       <%= f.label "Necessary goal" %><br />
-      <%= f.input_field :goal, placeholder: "USD", required: true %>
+      <%= f.input_field :goal, placeholder: "USD", required: true, value: false %>
     </div>
     <div class="field">
       <%= f.label "Expiration date" %><br />
@@ -29,4 +29,3 @@
     <%= f.submit "Create", class: "btn btn-success" %>
   </div>
 <% end %>
-

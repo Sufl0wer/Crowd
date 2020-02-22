@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   root controller: :web_site, action: :index
   controller 'web_site' do
     match 'search', action: :search, via: :get
+    match 'switch_theme', action: :switch_theme, via: :get
   end
 
   mount ActionCable.server => '/cable'

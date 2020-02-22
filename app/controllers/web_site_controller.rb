@@ -7,4 +7,14 @@ class WebSiteController < ApplicationController
     @search_results = Company.search(params[:search])
     render 'web_site/search'
   end
+
+  def switch_theme
+    session[:theme] =
+    if session[:theme]
+      nil
+    else
+      'dark'
+    end
+    redirect_back fallback_location: root_path
+  end
 end
