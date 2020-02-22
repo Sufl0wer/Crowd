@@ -1,7 +1,7 @@
 
 <h3 class="text-center" style="padding-bottom: 20px;">Company <a class="font-weight-bold">"<%= @company.name %>"</a> page</h3>
 
-<div class="container bg-light">
+<div class="container">
   <div class="row">
     <div class="col-7">
       <h5 class="font-weight-bold">Company information</h5>
@@ -21,7 +21,7 @@
       <h5 class="font-weight-bold">Available rewards</h5>
       <div class="d-flex">
         <% @rewards.each do |reward| %>
-          <div class="container bg-light border reward-container">
+          <div class="container border reward-container">
             <p><%= reward.name %></p>
             <p><a class="font-weight-bold">Price: <a/><%= reward.price %></p>
             <p><a class="font-weight-bold">Description: <a/><%= reward.description %></p>
@@ -101,7 +101,7 @@
 <div class="news-section">
   <h4>Latest company updates:</h4>
   <% @news_records.each do |record| %>
-    <div class="news-record bg-light">
+    <div class="news-record">
       <h5 class="heading font-weight-bold"><%= record.heading %></h5>
       <a class="content"><%= record.content %></a>
     </div>
@@ -148,7 +148,6 @@
                            autocomplete: 'off',
                            placeholder: 'write a comment'
                        } %>
-        <%#= form.drag_and_drop_file_field :image %>
         <div class="input-group-append">
           <%= form.submit "Send", class: 'btn btn-primary chat-input' %>
         </div>
@@ -156,7 +155,7 @@
     <% end %>
   </div>
 
-  <div class="container border bg-light" data-channel-subscribe="company" data-company-id="<%= @company.id %>">
+  <div class="container border comments-content" data-channel-subscribe="company" data-company-id="<%= @company.id %>">
     <div class="comments">
       <% @comments.each do |comment| %>
         <div class="text-left font-italic">

@@ -11,7 +11,11 @@
 }
 
 .comments-section {
-  background-color: rgba(0, 171, 255, 0.23);
+  background-color: rgba(0, 171, 255, 0.23) !important;
   border-top: solid;
   margin-top: 30px;
+}
+
+.comments-content {
+  background: #f8f9fa;
 }
