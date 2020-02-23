@@ -1,29 +1,41 @@
-<div>
-  <a>Welcom to personal page <%= current_user.username %></a>
+<div class="text-center">
+  <h3 class="font-weight-bold">Welcom to your personal page <%= current_user.username %></h3>
 </div>
 
-<div class="user-companies">
-  <h4 class="font-weight-bold">Your companies list</h4>
-  <% @companies.each do |company| %>
-    <div>
-      <%= link_to company.name, company, { style: 'color: black;', class: "link" } %>
-      <%= link_to 'Edit', edit_company_path(company) %>
-      <%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %>
+<div class="container user-data">
+  <div class="row">
+    <div class="col-7 user-companies">
+      <h4 class="font-weight-bold">Your companies list</h4>
+      <% @companies.each do |company| %>
+        <div>
+          <%= link_to company.name, company, { style: 'color: black;', class: "link" } %>
+          <%= link_to 'Edit', edit_company_path(company) %>
+          <%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+
+    <div class="col-24 user-rewards">
+      <h4>List of available rewards</h4>
+      <% if @rewards && @rewards != [] %>
+          <table class="table">
+            <tbody>
+            <tr>
+              <th>Company</th>
+              <th>Reward</th>
+            </tr>
+        <% @rewards.each do |reward| %>
+            <tr>
+              <td><%= reward.company.name %></td>
+              <td><%= reward.name %></td>
+            </tr>
+        <% end %>
+            </tbody>
+          </table>
+      <% else %>
+        <h5>Sadly you have no rewards yet</h5>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-<div class="user-rewards">
-  <a>...................</a>
-  <% if @rewards %>
-    <% @rewards.each do |reward| %>
-      <p><%= reward.name %></p>
-    <% end %>
-  <% end %>
-</div>
-
-<form action="/companies/new" method="get">
-  <button class="btn btn-primary">Add new company</button>
-</form>
-
 
