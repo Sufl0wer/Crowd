@@ -1,6 +1,6 @@
 class AdminsController < ApplicationController
   before_action :admin_check
-  before_action :set_company, only: [:destroy, :make_user_admin]
+  before_action :set_user, only: [:destroy, :make_user_admin]
 
   def users_list
     @users = User.all
@@ -15,7 +15,7 @@ class AdminsController < ApplicationController
 
   end
 
-  def make_user_admin
+  def change_role
     @user.role = 'admin'
     @user.save
     redirect_back fallback_location: root_path, notice: 'Admin was successfully added.'

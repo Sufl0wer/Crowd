@@ -14,6 +14,7 @@ $(function() {
             {
                 received: function(data) {
                     var content = commentTemplate.children().clone(true, true);
+                    content.find('[data-role="username"]').text(data.username);
                     content.find('[data-role="comment-content"]').text(data.content);
                     content.find('[data-role="comment-date"]').text(data.updated_at);
                     $element.append(content);

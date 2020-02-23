@@ -1,8 +1,44 @@
 <div class="text-center">
-  <h3 class="font-weight-bold">Welcom to your personal page <%= current_user.username %></h3>
+  <h3 class="font-weight-bold">Welcom to your personal page <%= @user.username %></h3>
 </div>
 
-<div class="container user-data">
+<div class="container user-profile-data">
+  <div class="row">
+    <div class="col-7 user-avatar-field">
+      <div class="user-avatar">
+        <% if @user.avatar.attached? %>
+          <div class="image">
+            <%= image_tag(@user.avatar, style:'width: 100%')%>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="user-avatar-change">
+        <%= simple_form_for @user, url: "/users/#{@user.id}/change_avatar", method: :post do |form| %>
+          <div class="drop-field">
+            <div class="file-upload-wrapper">
+              <%= form.input :avatar, label: false, type: "file", id: "input-file-now" %>
+            </div>
+            <%#= form.drag_and_drop_file_field :avatar %>
+          </div>
+          <div class="upload-button">
+            <%= form.submit "Upload", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-24 user-data">
+      <p><a class="font-weight-bold">Username:</a><a><%= @user.username %></a></p>
+      <p><a class="font-weight-bold">Email:</a><a><%= @user.email %></a></p>
+      <p><a class="font-weight-bold">Registration date:</a><a><%= @user.created_at %></a></p>
+
+      <a class="nav-link"> <%= link_to 'Edit', edit_user_registration_path %></a>
+    </div>
+  </div>
+</div>
+
+<div class="container user-companies-data">
   <div class="row">
     <div class="col-7 user-companies">
       <h4 class="font-weight-bold">Your companies list</h4>

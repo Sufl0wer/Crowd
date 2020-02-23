@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post '/companies/:company_id/donate', to: 'donations#donate'
 
   get '/users/:id', to: 'users#show'
+  post '/users/:id/change_avatar', to: 'users#change_avatar'
 
   get '/users_list', to: 'admins#users_list'
 
