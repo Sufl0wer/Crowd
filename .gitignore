@@ -7,7 +7,7 @@
 
 .idea
 
-.config/gce.json
+/config/gce.json
 
 # Ignore bundler config.
 /.bundle
