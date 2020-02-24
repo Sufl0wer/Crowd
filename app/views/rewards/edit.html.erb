@@ -1,6 +1,11 @@
 <h1>Editing Reward</h1>
 
 <%= simple_form_for @reward, url: polymorphic_path([:company, @reward]) do |f|%>
+  <% if @reward.errors.any? %>
+    <% @reward.errors.full_messages.each do |message| %>
+      <li class="error"><%= message %></li>
+    <% end %>
+  <% end %>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.input_field :name, autofocus: true, required: true %>

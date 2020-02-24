@@ -10,4 +10,24 @@
   background: #f0f0f0;
   margin-bottom: 5px;
   border-bottom: solid 1px;
+  .delete {
+    text-align: right;
+  }
+}
+
+.form-inputs {
+  .field {
+    input {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    textarea {
+      min-width: 500px;
+      min-height: 150px;
+      border-radius: 5px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+    }
+  }
 }

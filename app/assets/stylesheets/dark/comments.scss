@@ -4,6 +4,11 @@
 
 .comments {
   border-bottom: #666666;
+  .delete {
+    a {
+      color: red;
+    }
+  }
 }
 
 .new-comment {

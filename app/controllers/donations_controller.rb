@@ -29,7 +29,6 @@ class DonationsController < ApplicationController
   end
 
   def check_for_rewards
-    byebug
     @company.rewards.each do |reward|
       next if (current_user.rewards.include? reward)
       give_reward_to_user(reward) if (reward.price <= @donation.amount)

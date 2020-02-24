@@ -4,7 +4,7 @@ class CompaniesController < ApplicationController
 
 
   def index
-    @companies = Company.all
+    @companies = Company.all.sort_by(&:name)
   end
 
   def show
@@ -36,8 +36,11 @@ class CompaniesController < ApplicationController
                               description: company_params.dig(:description),
                               user_id: current_user.id
 
-    @company.save
-    redirect_to companies_path
+    if @company.save
+      redirect_to companies_path
+    else
+      render new_company_path
+    end
   end
 
   def update
@@ -68,7 +71,7 @@ class CompaniesController < ApplicationController
     end
 
   def check_owner
-    if Company.find(params[:id]).user != current_user
+    if Company.find(params[:id]).user != current_user && current_user.role != 'admin'
       redirect_back fallback_location: root_path, alert: "You cannot do this on company that not belongs to you!"
     end
   end

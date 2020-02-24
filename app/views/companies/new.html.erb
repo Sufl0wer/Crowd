@@ -1,6 +1,11 @@
 <h1>Company creation form</h1>
 
 <%= simple_form_for @company do |f|%>
+  <% if @company.errors.any? %>
+    <% @company.errors.full_messages.each do |message| %>
+      <li class="error"><%= message %></li>
+    <% end %>
+  <% end %>
   <div class="form-inputs new-company">
     <div class="field">
       <%= f.label :name %><br />

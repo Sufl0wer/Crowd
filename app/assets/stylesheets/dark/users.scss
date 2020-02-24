@@ -1,3 +1,34 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+table, tbody, th, td {
+}
+
+.upload-button {
+  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-left: 25px;
+  width: auto;
+}
+
+.user-avatar .image img {
+  max-height: 200px;
+  max-width: 150px;
+}
+
+.user-companies-data {
+  border-top: solid 1px;
+  padding-top: 25px;
+}
+
+.form-inputs {
+  .field {
+    padding-top: 20px;
+  }
+
+  .actions {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}

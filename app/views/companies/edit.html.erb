@@ -1,7 +1,11 @@
 <h1>Editing Company</h1>
 
 <%= simple_form_for @company, url: company_path do |f| %>
-  <%= f.error_notification %>
+  <% if @company.errors.any? %>
+    <% @company.errors.full_messages.each do |message| %>
+      <li class="error"><%= message %></li>
+    <% end %>
+  <% end %>
 
   <div class="form-inputs">
     <div class="field">

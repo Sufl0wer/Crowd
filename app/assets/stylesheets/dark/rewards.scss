@@ -3,7 +3,20 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .reward-container {
-  background: #555555;
+  background: #707070;
   border-radius: 10px;
   margin: 4px;
+  color: white;
+}
+
+.company-rewards {
+  max-width: 400px;
+  overflow-x: auto;
+}
+
+.reward-description {
+  background: #6c6c6c;
+  max-width: 120px;
+  max-height: 100px;
+  overflow-y: auto !important;
 }

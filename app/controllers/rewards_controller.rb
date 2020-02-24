@@ -15,9 +15,11 @@ class RewardsController < ApplicationController
                             description: reward_params.dig(:description),
                             company_id:  params.dig(:company_id)
 
-    @reward.save
-
-    redirect_to company_path(id:  params.dig(:company_id))
+    if @reward.save
+      redirect_to company_path(id:  params.dig(:company_id))
+    else
+      render 'rewards/new'
+    end
   end
 
   def update
