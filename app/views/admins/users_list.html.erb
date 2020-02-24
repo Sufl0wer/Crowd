@@ -13,14 +13,8 @@
     <td><%= user.email %></td>
     <td><%= user.role %></td>
     <td>
-      <div class="dropdown">
-        <a class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Change role
-        </a>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="/edit_role">User</a>
-          <a class="dropdown-item" href="/edit_role">Admin</a>
-        </div>
+      <div>
+        <%= link_to 'Switch role', "/change_role/#{user.id}", method: :post %>
       </div>
     </td>
   </tr>

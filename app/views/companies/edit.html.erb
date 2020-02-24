@@ -1,6 +1,32 @@
 <h1>Editing Company</h1>
 
-<%= render 'form', company: @company %>
+<%= simple_form_for @company, url: company_path do |f| %>
+  <%= f.error_notification %>
 
-<%= link_to 'Show', @company %> |
+  <div class="form-inputs">
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.input_field :name, autofocus: true, autocomplete: "name" %>
+    </div>
+    <div class="field">
+      <%= f.label "Necessary goal" %><br />
+      <%= f.input_field :goal, placeholder: "USD", autocomplete: "goal" %>
+    </div>
+    <div class="field">
+      <%= f.label :expiration_date %><br />
+      <%= f.input_field :expiration_date, as: :date, html5: true, autocomplete: "expiration_date" %>
+    </div>
+    <div class="field">
+      <%= f.label :description %><br />
+      <%= f.input_field :description, autocomplete: "description" %>
+    </div>
+  </div>
+
+  <br />
+
+  <div class="form-actions" style="padding-bottom: 20px">
+    <%= f.button :submit, "Edit", class: 'btn btn-success' %>
+  </div>
+<% end %>
+
 <%= link_to 'Back', companies_path %>

@@ -7,8 +7,6 @@
 
 .idea
 
-/config/gce.json
-
 # Ignore bundler config.
 /.bundle
 
@@ -27,6 +25,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/config/gce.json
 
 /public/packs
 /public/packs-test

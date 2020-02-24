@@ -1,6 +1,6 @@
 class AdminsController < ApplicationController
   before_action :admin_check
-  before_action :set_user, only: [:destroy, :make_user_admin]
+  before_action :set_user, only: [:destroy, :change_role]
 
   def users_list
     @users = User.all
@@ -16,15 +16,21 @@ class AdminsController < ApplicationController
   end
 
   def change_role
-    @user.role = 'admin'
+    @user.role =
+        if @user.role == 'user'
+          'admin'
+        else
+          'user'
+        end
     @user.save
+
     redirect_back fallback_location: root_path, notice: 'Admin was successfully added.'
   end
 
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
   end
 
   def admin_check

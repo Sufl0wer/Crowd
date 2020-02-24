@@ -1,5 +1,5 @@
 class RewardsController < ApplicationController
-  before_action :set_reward, only: [:show, :edit, :update, :destroy, :handle_reward_payment]
+  before_action :set_reward, only: [:edit, :update, :destroy]
 
   def new
     @reward = Reward.new
@@ -16,15 +16,19 @@ class RewardsController < ApplicationController
                             company_id:  params.dig(:company_id)
 
     @reward.save
+
     redirect_to company_path(id:  params.dig(:company_id))
   end
 
   def update
     @reward.update(reward_params)
+
+    redirect_back fallback_location: root_path
   end
 
   def destroy
     @reward.destroy
+
     redirect_back fallback_location: root_path
   end
 

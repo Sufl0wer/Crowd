@@ -3,4 +3,6 @@ class Reward < ApplicationRecord
 
   has_many :paid_rewards
   has_many :users, through: :paid_rewards
+
+  validates :price, presence: true, numericality: { greater_than: 0 }
 end
