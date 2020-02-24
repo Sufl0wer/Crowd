@@ -1,0 +1,23 @@
+<%#= simple_form_for @company, url: "/companies/#{@company.id}/add_image", method: :post do |form| %>
+<!--  <div class="drop-field">-->
+<!--    <div class="file-upload-wrapper">-->
+      <%#= form.input :images, multiple: true, label: false, type: "file", id: "input-file-now" %>
+<!--    </div>-->
+<!--  </div>-->
+<%= form_for @company, url: "/companies/#{@company.id}/add_image", method: :post do |f| %>
+ <%= f.file_field :images, multiple: true %>
+
+  <div class="upload-button">
+    <%= f.submit "Upload", class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<% if @images %>
+  <div class="d-flex">
+    <% @images.each do |image| %>
+      <div class="company-image">
+        <%= image_tag(image, style:'width: 100%')%>
+      </div>
+    <% end %>
+  </div>
+<% end %>

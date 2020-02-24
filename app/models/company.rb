@@ -10,6 +10,8 @@ class Company < ApplicationRecord
   has_many :donations, dependent: :destroy
   has_many :news_records, dependent: :destroy
 
+  has_many_attached :images
+
   pg_search_scope :search, against: [:name, :description],
                   associated_against: {
                       news_records: [:heading, :content],

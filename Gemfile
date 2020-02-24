@@ -5,6 +5,8 @@ ruby '2.6.3'
 
 gem 'devise'
 
+gem 'redcarpet', "~>" "2.3.0"
+
 gem "google-cloud-storage", "~> 1.11", require: false
 
 gem 'acts-as-taggable-on', '~> 6.0'

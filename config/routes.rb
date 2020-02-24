@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   end
 
   post '/companies/:company_id/donate', to: 'donations#donate'
+  get '/companies/:company_id/company_gallery', to: 'companies#company_gallery'
+  post '/companies/:company_id/add_image', to: 'companies#add_image'
 
   get '/users/:id', to: 'users#show'
   post '/users/:id/change_avatar', to: 'users#change_avatar'

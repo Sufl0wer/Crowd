@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :set_company, only: [:show, :edit, :update, :destroy, :gallery, :add_image]
   before_action :check_owner, only: [:edit, :update, :destroy]
 
 
@@ -60,9 +60,21 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def company_gallery
+    @company = Company.find(params.dig(:company_id))
+    @images = @company.images.all
+  end
+
+  def add_image
+    @company.images.attach(params.dig(:company, :images))
+    @company.save
+
+    redirect_back fallback_location: root_path
+  end
+
   private
     def set_company
-      @company = Company.find(params[:id])
+      @company = Company.find(params[:company_id])
     end
 
     def company_params

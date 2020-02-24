@@ -37,9 +37,6 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    active_storage_drag_and_drop (1.0.3)
-      rack (~> 2.0.6)
-      rails (>= 5.2.2.1)
     activejob (6.0.2.1)
       activesupport (= 6.0.2.1)
       globalid (>= 0.3.6)
@@ -221,6 +218,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rb-readline (0.5.5)
+    redcarpet (2.3.0)
     redis (4.1.3)
     representable (3.0.4)
       declarative (< 0.1.0)
@@ -286,7 +284,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_storage_drag_and_drop
   acts-as-taggable-on (~> 6.0)
   bootsnap (>= 1.4.2)
   bootstrap (~> 4.4.1)
@@ -305,6 +302,7 @@ DEPENDENCIES
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.1)
   rb-readline (~> 0.5.3)
+  redcarpet (~> 2.3.0)
   redis
   sass-rails (>= 6)
   simple_form
