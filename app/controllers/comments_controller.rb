@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     @comment = Comment.create user: current_user,
                               company: @company,
                               content: params.dig( :comment, :content)
+
     CompanyChannel.broadcast_to @company, @comment
   end
 

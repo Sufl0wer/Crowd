@@ -1,5 +1,6 @@
 class RewardsController < ApplicationController
   before_action :set_reward, only: [:edit, :update, :destroy]
+  before_action :check_owner, only: [:edit, :update, :destroy]
 
   def new
     @reward = Reward.new
@@ -42,5 +43,11 @@ class RewardsController < ApplicationController
 
   def reward_params
     params.require(:reward).permit(:name, :price, :description)
+  end
+
+  def check_owner
+    if Company.find(params[:company_id]).user != current_user && current_user.role != 'admin'
+      redirect_back fallback_location: root_path, alert: "You cannot do this on company that not belongs to you!"
+    end
   end
 end

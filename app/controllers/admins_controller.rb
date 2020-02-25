@@ -11,10 +11,6 @@ class AdminsController < ApplicationController
     redirect_back fallback_location: root_path, notice: 'User was successfully deleted.'
   end
 
-  def block_user
-
-  end
-
   def change_role
     @user.role =
         if @user.role == 'user'

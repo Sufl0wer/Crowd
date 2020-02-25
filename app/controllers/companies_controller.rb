@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy, :gallery, :add_image]
-  before_action :check_owner, only: [:edit, :update, :destroy]
+  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :check_owner, only: [:edit, :update, :destroy, :add_image]
 
 
   def index
@@ -66,6 +66,7 @@ class CompaniesController < ApplicationController
   end
 
   def add_image
+    @company = Company.find(params[:company_id])
     @company.images.attach(params.dig(:company, :images))
     @company.save
 
@@ -74,7 +75,7 @@ class CompaniesController < ApplicationController
 
   private
     def set_company
-      @company = Company.find(params[:company_id])
+      @company = Company.find(params[:id])
     end
 
     def company_params
