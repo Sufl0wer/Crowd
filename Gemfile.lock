@@ -180,7 +180,7 @@ GEM
       activesupport (>= 5.2)
     popper_js (1.16.0)
     public_suffix (4.0.3)
-    puma (4.3.1)
+    puma (4.3.3)
       nio4r (~> 2.0)
     rack (2.0.9)
     rack-proxy (0.6.5)
@@ -299,7 +299,7 @@ DEPENDENCIES
   omniauth-vkontakte
   pg (>= 0.18, < 2.0)
   pg_search
-  puma (~> 4.1)
+  puma (~> 4.3)
   rails (~> 6.0.2, >= 6.0.2.1)
   rb-readline (~> 0.5.3)
   redcarpet (~> 2.3.0)
