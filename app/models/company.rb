@@ -25,12 +25,12 @@ class Company < ApplicationRecord
                       }
                   }
 
-  validates :name, uniqueness: true, presence: true
-  validates :goal, presence: true, numericality: { greater_than: 0 }
-  validates :expiration_date, presence: true
-  validates :description, presence: true
+  validates :name, uniqueness: true, presence: true, on: :create
+  validates :goal, presence: true, numericality: { greater_than: 0 }, on: :create
+  validates :expiration_date, presence: true, on: :create
+  validates :description, presence: true, on: :create
 
-  validate :expiration_date_cannot_be_in_the_past
+  validate :expiration_date_cannot_be_in_the_past, on: :create
 
   def expiration_date_cannot_be_in_the_past
     if expiration_date.present? && expiration_date < Date.today
