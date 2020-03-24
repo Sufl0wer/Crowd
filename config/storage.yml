@@ -18,7 +18,8 @@ local:
 google:
   service: GCS
   project: Crowd
-  credentials: <%= Rails.root.join("config/gce.json") %>
+#  credentials: <%#= Rails.root.join("config/gce.json") %>
+  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'] %>
   bucket: crowd-bucket
 
 
