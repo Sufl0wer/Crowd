@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+gem 'json'
+gem 'rest-client'
+
 gem 'devise'
 
 gem 'redcarpet', "~>" "2.3.0"

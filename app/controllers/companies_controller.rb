@@ -75,7 +75,7 @@ class CompaniesController < ApplicationController
 
   private
     def set_company
-      @company = Company.find(params[:id])
+      @company = Company.find(company_id)
     end
 
     def company_params
@@ -84,8 +84,16 @@ class CompaniesController < ApplicationController
     end
 
   def check_owner
-    if Company.find(params[:company_id]).user != current_user && current_user.role != 'admin'
+    if Company.find(company_id).user != current_user && current_user.role != 'admin'
       redirect_back fallback_location: root_path, alert: "You cannot do this on company that not belongs to you!"
+    end
+  end
+
+  def company_id
+    if params[:id]
+      params[:id]
+    else
+      params[:company_id]
     end
   end
 end

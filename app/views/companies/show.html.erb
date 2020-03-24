@@ -90,24 +90,32 @@
               </button>
             </div>
             <div class="modal-body">
-              <%= simple_form_for @donation, url: "/companies/#{@company.id}/donate", method: :post do |form| %>
-                <div class="input-group mb-3 d-flex justify-content-center">
-                  <%= form.input :amount, as: :float,
-                                 wrapper: false,
-                                 autofocus: true,
-                                 label: false,
-                                 input_html: {
-                                     autocomplete: 'off',
-                                     autofocus: true,
-                                     placeholder: 'USD',
-                                     value: false
-                                 } %>
+              <div class="d-flex">
+                <div class="text-center">
+                  <p class="donation-heading">5$ donation</p>
+                  <script src='https://secure.tap2pay.me/checkout.v1.js'></script>
+                  <script>var t2pHandler = new T2P.Checkout({merchant_id: "4pbmpk5F"});</script>
+                  <button class="tap2pay-pay-btn" type="button" onClick="t2pHandler.openProduct('cTV8kkoz')">
+                    Pay using<i class="tap2pay-badge"></i><div class="tap2pay-safe-icons"></div>
+                  </button>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <%= form.submit "Donate", class: 'btn btn-primary' %>
+                <div class="text-center">
+                  <p class="donation-heading">15$ donation</p>
+                  <script src='https://secure.tap2pay.me/checkout.v1.js'></script>
+                  <script>var t2pHandler = new T2P.Checkout({merchant_id: "4pbmpk5F"});</script>
+                  <button class="tap2pay-pay-btn" type="button" onClick="t2pHandler.openProduct('8nsK45AC')">
+                    Pay using<i class="tap2pay-badge"></i><div class="tap2pay-safe-icons"></div>
+                  </button>
                 </div>
-              <% end %>
+                <div class="text-center">
+                  <p class="donation-heading">50$ donation</p>
+                  <script src='https://secure.tap2pay.me/checkout.v1.js'></script>
+                  <script>var t2pHandler = new T2P.Checkout({merchant_id: "4pbmpk5F"});</script>
+                  <button class="tap2pay-pay-btn" type="button" onClick="t2pHandler.openProduct('cTV8kkoz')">
+                    Pay using<i class="tap2pay-badge"></i><div class="tap2pay-safe-icons"></div>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
