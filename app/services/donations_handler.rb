@@ -3,7 +3,6 @@ class DonationsHandler
 
     def handle_donation (data)
       @invoice_data = data
-      byebug
       @user = find_user
       @company = find_company
       @donation_amount = data["data"]["items"][0]["price_value"] / 100
