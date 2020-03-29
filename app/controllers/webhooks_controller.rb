@@ -1,4 +1,4 @@
-class WebhookController < ApplicationController
+class WebhooksController < ApplicationController
   def recieve
     if request.headers['Content-Type'] == 'application/json'
       data = JSON.parse(request.body)
