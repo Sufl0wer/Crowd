@@ -92,13 +92,13 @@
             <div class="modal-body">
               <div class="d-flex justify-content-between">
                 <div class="text-center">
-                  <%= link_to '5$ donation', "/companies/#{@company.id}/donation" + '?price=5' %>
+                  <a class="btn btn-primary" href="<%= "/companies/#{@company.id}/donation" + '?price=5' %>">5$ donation</a>
                 </div>
                 <div class="text-center">
                   <a class="btn btn-primary" href="<%= "/companies/#{@company.id}/donation" + '?price=15' %>">15$ donation</a>
                 </div>
                 <div class="text-center">
-                  <a class="btn btn-primary" href="<%= @donation_options[2].payment_link %>">50$ donation</a>
+                  <a class="btn btn-primary" href="<%= "/companies/#{@company.id}/donation" + '?price=50' %>">50$ donation</a>
                 </div>
               </div>
             </div>
