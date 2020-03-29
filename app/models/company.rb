@@ -72,7 +72,7 @@ class Company < ApplicationRecord
     responce = Faraday.new('https://secure.tap2pay.me/api/invoices',
                          params: {
                              "invoice": {
-                                 "description": "user: #{user.id}",
+                                 "description": "user: #{user.id}, company: #{self.id}",
                                  "gateway_name": "string",
                                  "custom": "string",
                                  "billing_agreement": {

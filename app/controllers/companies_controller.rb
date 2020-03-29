@@ -17,7 +17,6 @@ class CompaniesController < ApplicationController
 
     @comment = Comment.new
     @paid_reward = PaidReward.new
-    @donation = Donation.new
     @news_record = NewsRecord.new
   end
 
