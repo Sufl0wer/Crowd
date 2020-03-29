@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  post '/tap2pay', to: 'webhooks#receive', as: :receive_webhooks
+  post '/tap2pay', to: 'webhooks#receive'
 
   get '/companies/:company_id/company_gallery', to: 'companies#company_gallery'
   post '/companies/:company_id/add_image', to: 'companies#add_image'
