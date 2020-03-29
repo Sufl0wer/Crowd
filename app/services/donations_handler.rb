@@ -1,11 +1,14 @@
 class DonationsHandler
   class << self
+
     def handle_donation (data)
       @invoice_data = data
+      byebug
       @user = find_user
       @company = find_company
+      @donation_amount = data["data"]["items"][0]["price_value"] / 100
       if (@donation = @user.donations.find_by(company_id: @company))
-        @donation.amount += data["data"]["items"][0]["price_value"] / 100
+        @donation.amount += @donation_amount
         @donation.save
       else
         create
@@ -31,7 +34,7 @@ class DonationsHandler
     end
 
     def calculate_current_donations
-      @company.current_bank += @donation.amount
+      @company.current_bank += @donation_amount
       @company.save
 
       check_for_rewards
