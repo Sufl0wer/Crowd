@@ -1,6 +1,10 @@
 class DonationsController < ApplicationController
   after_action :calculate_current_donations, only: :donate
 
+  def index
+    @invoice_link = invoice_link
+  end
+
   def donate
     if (@donation = current_user.donations.find_by(company_id: params.dig(:company_id)))
       @donation.amount += params.dig(:donation, :amount).to_f
@@ -19,6 +23,12 @@ class DonationsController < ApplicationController
   end
 
   private
+
+  def invoice_link
+    @company = Company.find(params.dig(:company_id))
+    @product = @company.products.find_by(price: params.dig(:price))
+    @company.create_invoice(@product, current_user)
+  end
 
   def calculate_current_donations
     @company = Company.find(params.dig(:company_id))

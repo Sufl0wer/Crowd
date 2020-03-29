@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 gem 'json'
-gem 'rest-client'
+gem 'faraday'
 
 gem 'devise'
 

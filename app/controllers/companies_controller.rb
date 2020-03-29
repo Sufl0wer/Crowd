@@ -13,6 +13,7 @@ class CompaniesController < ApplicationController
     @comments = @company.comments
     @news_records = @company.news_records
     @user_donations = @company.donations.find_by(user: current_user)
+    @donation_options = @company.products
 
     @comment = Comment.new
     @paid_reward = PaidReward.new
@@ -37,6 +38,7 @@ class CompaniesController < ApplicationController
                               user_id: current_user.id
 
     if @company.save
+      @company.create_payment_options
       redirect_to companies_path
     else
       render new_company_path

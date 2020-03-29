@@ -90,30 +90,15 @@
               </button>
             </div>
             <div class="modal-body">
-              <div class="d-flex">
+              <div class="d-flex justify-content-between">
                 <div class="text-center">
-                  <p class="donation-heading">5$ donation</p>
-                  <script src='https://secure.tap2pay.me/checkout.v1.js'></script>
-                  <script>var t2pHandler = new T2P.Checkout({merchant_id: "4pbmpk5F"});</script>
-                  <button class="tap2pay-pay-btn" type="button" onClick="t2pHandler.openProduct('cTV8kkoz')">
-                    Pay using<i class="tap2pay-badge"></i><div class="tap2pay-safe-icons"></div>
-                  </button>
+                  <%= link_to '5$ donation', "/companies/#{@company.id}/donation" + '?price=5' %>
                 </div>
                 <div class="text-center">
-                  <p class="donation-heading">15$ donation</p>
-                  <script src='https://secure.tap2pay.me/checkout.v1.js'></script>
-                  <script>var t2pHandler = new T2P.Checkout({merchant_id: "4pbmpk5F"});</script>
-                  <button class="tap2pay-pay-btn" type="button" onClick="t2pHandler.openProduct('8nsK45AC')">
-                    Pay using<i class="tap2pay-badge"></i><div class="tap2pay-safe-icons"></div>
-                  </button>
+                  <a class="btn btn-primary" href="<%= "/companies/#{@company.id}/donation" + '?price=15' %>">15$ donation</a>
                 </div>
                 <div class="text-center">
-                  <p class="donation-heading">50$ donation</p>
-                  <script src='https://secure.tap2pay.me/checkout.v1.js'></script>
-                  <script>var t2pHandler = new T2P.Checkout({merchant_id: "4pbmpk5F"});</script>
-                  <button class="tap2pay-pay-btn" type="button" onClick="t2pHandler.openProduct('cTV8kkoz')">
-                    Pay using<i class="tap2pay-badge"></i><div class="tap2pay-safe-icons"></div>
-                  </button>
+                  <a class="btn btn-primary" href="<%= @donation_options[2].payment_link %>">50$ donation</a>
                 </div>
               </div>
             </div>
