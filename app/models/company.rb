@@ -97,6 +97,6 @@ class Company < ApplicationRecord
                          }
     ).post
 
-    JSON.parse(responce.body)["web_checkout_link"]
+    JSON.parse(responce.body)["id"]
   end
 end

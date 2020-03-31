@@ -1,14 +1,13 @@
 class DonationsController < ApplicationController
 
   def index
-    @invoice_link = invoice_link
+    @invoices = create_invoices
   end
 
   private
 
-  def invoice_link
+  def create_invoices
     @company = Company.find(params.dig(:company_id))
-    @product = @company.products.find_by(price: params.dig(:price))
-    @company.create_invoice(@product, current_user)
+    @company.products.map { |product| @company.create_invoice(product, current_user) }
   end
 end

@@ -1,3 +1,25 @@
-<p>To continue payment follow the link below</p>
-<a href="<%= @invoice_link %>" target="_blank"><%= @invoice_link %></a>
+<h4 class="donation-options-heading">Choose donation option</h4>
+<div class="d-flex justify-content-between donation-options">
+  <div class="text-center">
+    <script src='https://secure.tap2pay.me/checkout.v1.js'></script>
+    <script>
+        var t2pHandler = new T2P.Checkout({merchant_id: "4pbmpk5F"});
+    </script>
+    <button class="btn btn-primary" type="button" onClick="t2pHandler.openInvoice( '<%= @invoices[0] %>', { enabledChats: ['facebook', 'viber', 'telegram'] })">5$ donation</button>
+  </div>
+  <div class="text-center">
+    <script src='https://secure.tap2pay.me/checkout.v1.js'></script>
+    <script>
+        var t2pHandler = new T2P.Checkout({merchant_id: "4pbmpk5F"});
+    </script>
+    <button class="btn btn-primary" type="button" onClick="t2pHandler.openInvoice( '<%= @invoices[1] %>', { enabledChats: ['facebook', 'viber', 'telegram'] })">15$ donation</button>
+  </div>
+  <div class="text-center">
+    <script src='https://secure.tap2pay.me/checkout.v1.js'></script>
+    <script>
+        var t2pHandler = new T2P.Checkout({merchant_id: "4pbmpk5F"});
+    </script>
+    <button class="btn btn-primary" type="button" onClick="t2pHandler.openInvoice( '<%= @invoices[2] %>', { enabledChats: ['facebook', 'viber', 'telegram'] })">50$ donation</button>
+  </div>
+</div>
 <p class="link_to_back"><%= link_to "Back to company page", @company, { class: "link" } %></p>
